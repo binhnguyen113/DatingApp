@@ -18,11 +18,11 @@ export class RegisterComponent {
 
     register() {
       this.accountService.register(this.model).subscribe(
-        (response) =>{
+        response =>{
         console.log(response);
         this.cancel();
       }, 
-      (error) =>{
+      error =>{
         console.log(error);
         this.toastr.error(error.error);
       })
