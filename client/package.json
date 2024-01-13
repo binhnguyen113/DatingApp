@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && ng serve",
+    "start": "SET NODE_OPTIONS=--max_old_space_size=8192 && SET NODE_OPTIONS=--openssl-legacy-provider && ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -13,7 +13,7 @@
   "dependencies": {
     "@angular/animations": "~10.2.5",
     "@angular/cdk": "^10.2.5",
-    "@angular/common": "^10.2.5",
+    "@angular/common": "~10.2.5",
     "@angular/compiler": "^10.1.6",
     "@angular/core": "~10.2.5",
     "@angular/forms": "^10.2.5",
