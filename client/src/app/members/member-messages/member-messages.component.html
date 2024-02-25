@@ -3,7 +3,12 @@
         <div *ngIf="(messageService.messageThread$ | async)?.length === 0">
             No messages yet... say hi by using the message box below
         </div>
-        <ul *ngIf="(messageService.messageThread$ | async)?.length > 0">
+
+        <ul #scrollMe
+            style="overflow-y: scroll; height: 500px;"
+            [scrollTop]="scrollMe.scrollHeight"
+            *ngIf="(messageService.messageThread$ | async).length > 0" 
+            class="chat">
             <li *ngFor="let message of (messageService.messageThread$ | async)">
                 <div>
                     <span class="chat-img float-right">
@@ -30,19 +35,20 @@
             </li>
         </ul>
     </div>
+
     <div class="card-footer">
-        <form #messageForm="ngForm" (ngSubmit)="sendMessage()" autocomplete="off">
+        <form #messageForm="ngForm" (submit)="sendMessage()" autocomplete="off">
             <div class="input-group">
-                <input 
-                name="messageContent"
-                required
-                [(ngModel)]="messageContent" 
-                type="text" 
-                class="form-control input-sm" 
-                placeholder="Send a private message">
-            <div class="input-group-append">
-                <button [disabled]="!messageForm.valid" class="btn btn-primary" type="submit">Send</button>
-            </div>
+                <input
+                    name="messageContent"
+                    required
+                    [(ngModel)]="messageContent" 
+                    type="text" 
+                    class="form-control input-sm" 
+                    placeholder="Send a private message">
+                <div class="input-group-append">
+                    <button [disabled]="!messageForm.valid" class="btn btn-primary" type="submit">Send</button>
+                </div>
             </div>
         </form>
     </div>
